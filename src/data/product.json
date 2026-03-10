@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "name": "Pizza Margarita",
+    "price": 11,
+    "category": "Pizza",
+    "image": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=400&q=80",
+    "tags": ["Tomate", "Emmental", "Champignons"]
+  },
+  {
+    "id": 2,
+    "name": "Pizza 4 Fromages",
+    "price": 13,
+    "category": "Pizza",
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80",
+    "tags": ["Emmental", "Mozzarella", "Tomate"]
+  },
+  {
+    "id": 3,
+    "name": "Burger Classic",
+    "price": 10,
+    "category": "Burger",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80",
+    "tags": ["Boeuf", "Tomate", "Oignons", "Cornichons"]
+  },
+  {
+    "id": 4,
+    "name": "Burger BBQ",
+    "price": 12,
+    "category": "Burger",
+    "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&q=80",
+    "tags": ["Boeuf", "Emmental", "Oignons"]
+  },
+  {
+    "id": 5,
+    "name": "Kebab Rouleau + Frites",
+    "price": 14,
+    "category": "Kebab",
+    "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80",
+    "tags": ["Agneau", "Frites", "Oignons"]
+  },
+  {
+    "id": 6,
+    "name": "Assiette Kebab",
+    "price": 13,
+    "category": "Kebab",
+    "image": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80",
+    "tags": ["Agneau", "Tomate", "Oignons"]
+  },
+  {
+    "id": 7,
+    "name": "Poulet Frit",
+    "price": 10,
+    "category": "Poulet frit",
+    "image": "https://images.unsplash.com/photo-1562967914-608f82629710?w=400&q=80",
+    "tags": ["Poulet"]
+  },
+  {
+    "id": 8,
+    "name": "Club Sandwich + Frites",
+    "price": 13,
+    "category": "Poulet frit",
+    "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80",
+    "tags": ["Poulet", "Tomate", "Emmental", "Frites"]
+  },
+  {
+    "id": 9,
+    "name": "Frites",
+    "price": 4,
+    "category": "Accompagnements",
+    "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=400&q=80",
+    "tags": ["Frites"]
+  },
+  {
+    "id": 10,
+    "name": "Salade César",
+    "price": 7,
+    "category": "Accompagnements",
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80",
+    "tags": ["Poulet", "Tomate"]
+  },
+  {
+    "id": 11,
+    "name": "Crêpe Chantilly",
+    "price": 5,
+    "category": "Desserts",
+    "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=400&q=80",
+    "tags": ["Crêpe", "Chantilly"]
+  },
+  {
+    "id": 12,
+    "name": "Coca-Cola",
+    "price": 3,
+    "category": "Boissons",
+    "image": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400&q=80",
+    "tags": ["Boissons"]
+  },
+  {
+    "id": 17,
+    "name": "Tiramisu",
+    "price": 6,
+    "category": "Desserts",
+    "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80",
+    "tags": ["Desserts"]
+  },
+  {
+    "id": 18,
+    "name": "Brownie Chocolat",
+    "price": 5,
+    "category": "Desserts",
+    "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&q=80",
+    "tags": ["Desserts", "Chocolat"]
+  },
+  {
+    "id": 19,
+    "name": "Glace Vanille",
+    "price": 4,
+    "category": "Desserts",
+    "image": "https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=400&q=80",
+    "tags": ["Desserts"]
+  },
+  {
+    "id": 20,
+    "name": "Nuggets x6",
+    "price": 5,
+    "category": "Accompagnements",
+    "image": "https://images.unsplash.com/photo-1562967914-608f82629710?w=400&q=80",
+    "tags": ["Poulet", "Accompagnements"]
+  },
+  {
+    "id": 21,
+    "name": "Onion Rings",
+    "price": 4,
+    "category": "Accompagnements",
+    "image": "https://images.unsplash.com/photo-1639024471283-03518883512d?w=400&q=80",
+    "tags": ["Oignons", "Accompagnements"]
+  },
+  {
+    "id": 22,
+    "name": "Soupe à l'Oignon",
+    "price": 6,
+    "category": "Accompagnements",
+    "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&q=80",
+    "tags": ["Oignons", "Chaud"]
+  },
+  {
+    "id": 23,
+    "name": "Thé Menthe",
+    "price": 2,
+    "category": "Boissons",
+    "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80",
+    "tags": ["Boissons", "Chaud"]
+  },
+  {
+    "id": 24,
+    "name": "Milkshake Fraise",
+    "price": 5,
+    "category": "Boissons",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80",
+    "tags": ["Boissons", "Froid"]
+  },
+  {
+    "id": 25,
+    "name": "Limonade Maison",
+    "price": 4,
+    "category": "Boissons",
+    "image": "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&q=80",
+    "tags": ["Boissons", "Froid"]
+  },
+  {
+    "id": 26,
+    "name": "Pizza Pepperoni",
+    "price": 13,
+    "category": "Pizza",
+    "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400&q=80",
+    "tags": ["Tomate", "Emmental"]
+  },
+  {
+    "id": 27,
+    "name": "Burger Végétarien",
+    "price": 11,
+    "category": "Burger",
+    "image": "https://images.unsplash.com/photo-1520072959219-c595dc870360?w=400&q=80",
+    "tags": ["Tomate", "Oignons", "Champignons"]
+  },
+  {
+    "id": 28,
+    "name": "Wrap Poulet",
+    "price": 9,
+    "category": "Poulet frit",
+    "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&q=80",
+    "tags": ["Poulet", "Tomate", "Oignons"]
+  }
+]
