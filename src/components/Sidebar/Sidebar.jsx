@@ -1,6 +1,6 @@
 import SidebarBlock from "./SidebarBlock";
-import { Form, Badge, InputGroup} from "react-bootstrap";
-
+import { Form, Badge, InputGroup, Button} from "react-bootstrap";
+import {useFilters} from '../../context/FilterContext';
 const CATEGORIES = [
   "Burger",
   "Pizza",
@@ -25,32 +25,27 @@ const TAGS = [
   "Frites",
 ];
 
-const Sidebar = ({
-  selectedCategory,
-  maxPrice,
-  onCategoryChange,
-  onPriceChange,
-  selectedTag,
-  onTagChange,
-  searchQuery,
-  onSearchQueryChange
-}) => {
+const Sidebar = () =>{
+
+  const {
+    selectedCategory, setSelectedCategory,
+    maxPrice, setMaxPrice,
+    selectedTag, setSelectedTag,
+    searchQuery, setSearchQuery,
+    clearFilters
+  } = useFilters();
   return (
     <aside style={{ width: "220px", flexShrink: 0 }}>
       {/* Bloc Catégories */}
       <SidebarBlock title="Catégorie">
         {CATEGORIES.map((cat) => (
-          <div
+         <div
             key={cat}
-            onClick={() =>
-              onCategoryChange(cat === selectedCategory ? "" : cat)
-            }
+            onClick={() => setSelectedCategory(cat === selectedCategory ? "" : cat)}
             className="px-3 py-2 border-bottom"
             style={{
               cursor: "pointer",
-              fontSize: "0.9rem",
               backgroundColor: selectedCategory === cat ? "#f0f0f0" : "white",
-              fontWeight: selectedCategory === cat ? "600" : "normal",
             }}
           >
             {cat}
@@ -66,7 +61,7 @@ const Sidebar = ({
             type="number"
             placeholder="Filtrer par prix"
             value={maxPrice}
-            onChange={(e) => onPriceChange(e.target.value)}
+            onChange={(e) => setMaxPrice(e.target.value)}
             className="border-0 p-0 shadow-none"
             style={{ fontSize: "0.9rem" }}
           />
@@ -80,7 +75,7 @@ const Sidebar = ({
       type="text"
       placeholder="Rechercher un produit..."
       value={searchQuery}
-      onChange={(e) => onSearchQueryChange(e.target.value)}
+     onChange={(e) => setSearchQuery(e.target.value)}
     />
   </InputGroup>
       </SidebarBlock>
@@ -96,15 +91,18 @@ const Sidebar = ({
               text={selectedTag === tag ? "white" : "dark"} 
               className="border fw-normal"
               style={{ fontSize: "0.75rem", cursor: "pointer" }}
-              onClick={() => onTagChange(tag === selectedTag ? "" : tag)}
+              onClick={() => setSelectedTag(tag === selectedTag ? "" : tag)}
             >
               {tag}
             </Badge>
           ))}
         </div>
       </SidebarBlock>
+      <button className="btn btn-link btn-sm w-100" onClick={clearFilters}>
+        Effacer les filtres
+      </button>
     </aside>
-  );
+  )
 };
 
 export default Sidebar;

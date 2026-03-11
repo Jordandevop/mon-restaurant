@@ -7,15 +7,13 @@ import products from "./data/product";
 import { useState } from "react";
 import ProductCard from "./components/Product/ProductCard";
 import CartPanel from "./components/Cart/CartPanel";
+import { useFilters } from "./context/FilterContext";
 
 const allCategories = products.map((p) => p.category)
 const CATEGORIES = [...new Set(allCategories)]
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-  const [selectedTag, setSelectedTag] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
+ const { selectedCategory, maxPrice, selectedTag, searchQuery } = useFilters();
   
 
   const filteredProducts = products.filter((p) => {
@@ -65,14 +63,6 @@ const handleRemoveFromCart = (productId) => {
         <Row>
           <Col xs={3}>
             <Sidebar
-              categories={CATEGORIES}
-              selectedCategory={selectedCategory}
-              maxPrice={maxPrice}
-              selectedTag={selectedTag}
-              onCategoryChange={setSelectedCategory}
-              onPriceChange={setMaxPrice}
-              onTagChange={setSelectedTag}
-              onSearchQueryChange={setSearchQuery}
             />
           </Col>
           <Col xs={9}>
