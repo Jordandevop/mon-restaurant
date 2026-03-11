@@ -1,5 +1,5 @@
 import SidebarBlock from "./SidebarBlock";
-import { Form, Badge } from "react-bootstrap";
+import { Form, Badge, InputGroup} from "react-bootstrap";
 
 const CATEGORIES = [
   "Burger",
@@ -32,6 +32,8 @@ const Sidebar = ({
   onPriceChange,
   selectedTag,
   onTagChange,
+  searchQuery,
+  setSearchQuery
 }) => {
   return (
     <aside style={{ width: "220px", flexShrink: 0 }}>
@@ -69,6 +71,18 @@ const Sidebar = ({
             style={{ fontSize: "0.9rem" }}
           />
         </div>
+      </SidebarBlock>
+
+      <SidebarBlock>
+        <InputGroup>
+    <InputGroup.Text>🔍</InputGroup.Text>
+    <Form.Control
+      type="text"
+      placeholder="Rechercher un produit..."
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+    />
+  </InputGroup>
       </SidebarBlock>
 
       {/* Bloc Tags */}

@@ -1,4 +1,4 @@
-import { Container, Row, Col, InputGroup, Form } from "react-bootstrap";
+import { Container, Row, Col} from "react-bootstrap";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import NavbarComponent from "./components/Navbar/NavbarComponent";
@@ -15,7 +15,8 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery] = useState("");
+  
 
   const filteredProducts = products.filter((p) => {
     const matchCategory = selectedCategory
@@ -35,12 +36,10 @@ const handleAddToCart = (product) => {
   const alreadyInCart = cartItems.find((item) => item.id === product.id)
 
   if (alreadyInCart) {
-    // Le produit existe déjà → on incrémente la quantité
     setCartItems(cartItems.map((item) =>
       item.id === product.id ? { ...item, qty: item.qty + 1 } : item
     ))
   } else {
-    // Nouveau produit → on l'ajoute avec qty: 1
     setCartItems([...cartItems, { ...product, qty: 1 }])
   }
 }
@@ -59,15 +58,7 @@ const handleRemoveFromCart = (productId) => {
       <NavbarComponent />
 
       <Container className="mt-3">
-  <InputGroup>
-    <InputGroup.Text>🔍</InputGroup.Text>
-    <Form.Control
-      type="text"
-      placeholder="Rechercher un produit..."
-      value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
-    />
-  </InputGroup>
+  
 </Container>
 
       <Container className="my-4">
