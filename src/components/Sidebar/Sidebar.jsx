@@ -33,7 +33,7 @@ const Sidebar = ({
   selectedTag,
   onTagChange,
   searchQuery,
-  setSearchQuery
+  onSearchQueryChange
 }) => {
   return (
     <aside style={{ width: "220px", flexShrink: 0 }}>
@@ -80,7 +80,7 @@ const Sidebar = ({
       type="text"
       placeholder="Rechercher un produit..."
       value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
+      onChange={(e) => onSearchQueryChange(e.target.value)}
     />
   </InputGroup>
       </SidebarBlock>

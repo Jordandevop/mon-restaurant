@@ -15,7 +15,7 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
-  const [searchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   
 
   const filteredProducts = products.filter((p) => {
@@ -72,6 +72,7 @@ const handleRemoveFromCart = (productId) => {
               onCategoryChange={setSelectedCategory}
               onPriceChange={setMaxPrice}
               onTagChange={setSelectedTag}
+              onSearchQueryChange={setSearchQuery}
             />
           </Col>
           <Col xs={9}>
