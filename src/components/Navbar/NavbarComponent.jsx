@@ -6,7 +6,7 @@ const NavbarComponent = () => {
   return (
      <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Mon Restaurant</Navbar.Brand>
+          <Navbar.Brand href="#home"> 🍽 Mon Restaurant</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#home">Menu</Nav.Link>
           </Nav>
@@ -16,3 +16,6 @@ const NavbarComponent = () => {
 };
 
 export default NavbarComponent;
+
+
+

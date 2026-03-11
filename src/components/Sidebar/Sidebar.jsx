@@ -1,6 +1,7 @@
 import SidebarBlock from "./SidebarBlock";
-import { Form, Badge, InputGroup, Button} from "react-bootstrap";
-import {useFilters} from '../../context/FilterContext';
+import { Form, Badge, InputGroup } from "react-bootstrap";
+import { useFilters } from '../../context/FilterContext';
+
 const CATEGORIES = [
   "Burger",
   "Pizza",
@@ -25,8 +26,7 @@ const TAGS = [
   "Frites",
 ];
 
-const Sidebar = () =>{
-
+const Sidebar = () => {
   const {
     selectedCategory, setSelectedCategory,
     maxPrice, setMaxPrice,
@@ -34,63 +34,79 @@ const Sidebar = () =>{
     searchQuery, setSearchQuery,
     clearFilters
   } = useFilters();
+
   return (
-    <aside style={{ width: "220px", flexShrink: 0 }}>
+    <aside>
       {/* Bloc Catégories */}
       <SidebarBlock title="Catégorie">
         {CATEGORIES.map((cat) => (
-         <div
+          <div
             key={cat}
             onClick={() => setSelectedCategory(cat === selectedCategory ? "" : cat)}
             className="px-3 py-2 border-bottom"
             style={{
               cursor: "pointer",
-              backgroundColor: selectedCategory === cat ? "#f0f0f0" : "white",
+              fontSize: '0.9rem',
+              backgroundColor: selectedCategory === cat ? 'var(--brand-light)' : 'white',
+              color: selectedCategory === cat ? 'var(--brand-dark)' : '#333',
+              fontWeight: selectedCategory === cat ? '600' : '400',
+              borderLeft: selectedCategory === cat ? '3px solid var(--brand)' : '3px solid transparent',
+              transition: 'all 0.15s',
             }}
+            onMouseEnter={e => { if (selectedCategory !== cat) e.currentTarget.style.backgroundColor = '#fafafa' }}
+            onMouseLeave={e => { if (selectedCategory !== cat) e.currentTarget.style.backgroundColor = 'white' }}
           >
             {cat}
           </div>
         ))}
       </SidebarBlock>
 
+      {/* Bloc Recherche */}
+      <SidebarBlock>
+        <InputGroup className="p-2">
+          <InputGroup.Text className="border-0 bg-white" style={{ fontSize: '0.85rem' }}>🔍</InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Rechercher..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="border-0 shadow-none"
+            style={{ fontSize: '0.9rem' }}
+          />
+        </InputGroup>
+      </SidebarBlock>
+
       {/* Bloc Prix */}
       <SidebarBlock>
         <div className="d-flex align-items-center px-3 py-2">
-          <span className="text-muted me-2">€</span>
+          <span className="me-2" style={{ color: 'var(--brand)', fontWeight: 600 }}>€</span>
           <Form.Control
             type="number"
-            placeholder="Filtrer par prix"
+            placeholder="Prix max"
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
             className="border-0 p-0 shadow-none"
-            style={{ fontSize: "0.9rem" }}
+            style={{ fontSize: '0.9rem' }}
           />
         </div>
       </SidebarBlock>
 
-      <SidebarBlock>
-        <InputGroup>
-    <InputGroup.Text>🔍</InputGroup.Text>
-    <Form.Control
-      type="text"
-      placeholder="Rechercher un produit..."
-      value={searchQuery}
-     onChange={(e) => setSearchQuery(e.target.value)}
-    />
-  </InputGroup>
-      </SidebarBlock>
-
       {/* Bloc Tags */}
-      <SidebarBlock>
+      <SidebarBlock title="Ingrédients">
         <div className="d-flex flex-wrap gap-1 p-2">
           {TAGS.map((tag) => (
             <Badge
               key={tag}
               pill
-              bg={selectedTag === tag ? "dark" : "light"} 
-              text={selectedTag === tag ? "white" : "dark"} 
+              bg={selectedTag === tag ? undefined : "light"}
+              text={selectedTag === tag ? "white" : "dark"}
               className="border fw-normal"
-              style={{ fontSize: "0.75rem", cursor: "pointer" }}
+              style={{
+                fontSize: "0.72rem",
+                cursor: "pointer",
+                backgroundColor: selectedTag === tag ? 'var(--brand)' : undefined,
+                borderColor: selectedTag === tag ? 'var(--brand)' : '#ddd',
+              }}
               onClick={() => setSelectedTag(tag === selectedTag ? "" : tag)}
             >
               {tag}
@@ -98,11 +114,16 @@ const Sidebar = () =>{
           ))}
         </div>
       </SidebarBlock>
-      <button className="btn btn-link btn-sm w-100" onClick={clearFilters}>
-        Effacer les filtres
+
+      <button
+        className="btn btn-sm w-100"
+        style={{ color: 'var(--brand)', borderColor: 'var(--brand)', background: 'white' }}
+        onClick={clearFilters}
+      >
+        ✕ Effacer les filtres
       </button>
     </aside>
-  )
+  );
 };
 
 export default Sidebar;

@@ -1,14 +1,14 @@
 import './Footer.css'
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear()
   return (
-     <footer className="footer">
+    <footer className="footer">
+      <p className="footer-brand">Mon Restaurant</p>
       <p className="footer-text">
-        © {currentYear} Mon Restaurant — Tous droits réservés
+        © {currentYear} — Tous droits réservés ·
       </p>
     </footer>
-    
   )
 }
 

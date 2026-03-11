@@ -1,80 +1,33 @@
-import { Container, Row, Col} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import NavbarComponent from "./components/Navbar/NavbarComponent";
 import Sidebar from "./components/Sidebar/Sidebar";
-import products from "./data/product";
-import { useState } from "react";
 import ProductCard from "./components/Product/ProductCard";
 import CartPanel from "./components/Cart/CartPanel";
 import { useFilters } from "./context/FilterContext";
+import { useCart } from "./context/CartContext";
 
-const allCategories = products.map((p) => p.category)
-const CATEGORIES = [...new Set(allCategories)]
 
 function App() {
- const { selectedCategory, maxPrice, selectedTag, searchQuery } = useFilters();
-  
-
-  const filteredProducts = products.filter((p) => {
-    const matchCategory = selectedCategory
-      ? p.category === selectedCategory
-      : true;
-    const matchPrice = maxPrice ? p.price <= Number(maxPrice) : true;
-    const matchTag = selectedTag ? p.tags.includes(selectedTag) : true;
-    const matchQuery = searchQuery ? p.name.toLowerCase().includes(searchQuery.toLowerCase()) : true;
-    return matchCategory && matchPrice && matchTag && matchQuery;
-  });
-
-  const [cartItems, setCartItems] = useState([])
-const [isCartOpen, setIsCartOpen] = useState(false)
-
-// Ajouter au panier
-const handleAddToCart = (product) => {
-  const alreadyInCart = cartItems.find((item) => item.id === product.id)
-
-  if (alreadyInCart) {
-    setCartItems(cartItems.map((item) =>
-      item.id === product.id ? { ...item, qty: item.qty + 1 } : item
-    ))
-  } else {
-    setCartItems([...cartItems, { ...product, qty: 1 }])
-  }
-}
-
-// Supprimer du panier
-const handleRemoveFromCart = (productId) => {
-  setCartItems(cartItems.filter((item) => item.id !== productId))
-}
+  const { filteredProducts } = useFilters();
+  const { cartCount, isCartOpen, setIsCartOpen, cartItems, addToCart, removeOne, deleteItem } = useCart();
 
   return (
     <>
-      <Header 
-      onOpenCart={() => setIsCartOpen(true)}
-  cartCount={cartItems.reduce((sum, item) => sum + item.qty, 0)}
-  />
+      <Header onOpenCart={() => setIsCartOpen(true)} cartCount={cartCount} />
       <NavbarComponent />
-
-      <Container className="mt-3">
-  
-</Container>
-
       <Container className="my-4">
         <Row>
-          <Col xs={3}>
-            <Sidebar
-            />
-          </Col>
+          <Col xs={3}><Sidebar /></Col>
           <Col xs={9}>
             <Row xs={1} sm={2} md={3} className="g-3">
               {filteredProducts.length === 0 ? (
-                <p className="text-muted text-center mt-4">
-                  Aucun produit trouvé.
-                </p>
+                <p className="text-muted text-center mt-4">Aucun produit trouvé.</p>
               ) : (
                 filteredProducts.map((product) => (
                   <Col key={product.id}>
-                    <ProductCard product={product} onAddToCart={handleAddToCart} />
+                    <ProductCard product={product} onAddToCart={addToCart} />
                   </Col>
                 ))
               )}
@@ -84,13 +37,15 @@ const handleRemoveFromCart = (productId) => {
       </Container>
       <Footer />
       <CartPanel
-  isOpen={isCartOpen}
-  items={cartItems}
-  onClose={() => setIsCartOpen(false)}
-  onRemove={handleRemoveFromCart}
-/>
+        isOpen={isCartOpen}
+        items={cartItems}
+        onClose={() => setIsCartOpen(false)}
+        onRemove={deleteItem}
+        onDecrease={removeOne}
+        onAdd={addToCart}
+      />
     </>
   );
 }
 
-export default App;
+export default App
