@@ -1,5 +1,5 @@
 import SidebarBlock from "./SidebarBlock";
-import { Form, Badge, InputGroup } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
 import { useFilters } from '../../context/useFilter';
 import styles from './Sidebar.module.css';
 import {useFavorites} from '../../context/useFavorites';
@@ -100,22 +100,22 @@ const Sidebar = () => {
       <SidebarBlock title="Ingrédients">
         <div className="d-flex flex-wrap gap-1 p-2">
           {TAGS.map((tag) => (
-            <Badge
+            <span
               key={tag}
-              pill
-              bg={selectedTag === tag ? undefined : "light"}
-              text={selectedTag === tag ? "white" : "dark"}
-              className="border fw-normal"
+              onClick={() => setSelectedTag(tag === selectedTag ? "" : tag)}
               style={{
                 fontSize: "0.72rem",
                 cursor: "pointer",
-                backgroundColor: selectedTag === tag ? 'var(--brand)' : undefined,
-                borderColor: selectedTag === tag ? 'var(--brand)' : 'var(--border)',
+                padding: "2px 8px",
+                borderRadius: "50px",
+                border: `1px solid ${selectedTag === tag ? 'var(--brand)' : 'var(--border)'}`,
+                backgroundColor: selectedTag === tag ? 'var(--brand)' : 'var(--bg)',
+                color: selectedTag === tag ? 'var(--bg)' : 'var(--dark)',
+                transition: "all 0.15s",
               }}
-              onClick={() => setSelectedTag(tag === selectedTag ? "" : tag)}
             >
               {tag}
-            </Badge>
+            </span>
           ))}
         </div>
       </SidebarBlock>
