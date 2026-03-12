@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Offcanvas, ListGroup, Modal } from "react-bootstrap";
-import { useCart } from "../../context/Cartcontext";
+import { useCart } from "../../context/useCart";
 import styles from "./CartPanel.module.css";
 
 const CartPanel = ({ isOpen, items, onClose, onRemove, onAdd, onDecrease }) => {

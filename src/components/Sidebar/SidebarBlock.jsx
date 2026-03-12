@@ -2,9 +2,9 @@ import { Card } from 'react-bootstrap'
 
 const SidebarBlock = ({ title, children }) => {
   return (
-    <Card className="mb-3 border-0 shadow-sm" style={{ borderRadius: '8px', overflow: 'hidden' }}>
+    <Card className="mb-3" style={{ borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--border)' }}>
       {title && (
-        <Card.Header className="fw-semibold text-white" style={{ backgroundColor: 'var(--brand)', fontSize: '0.85rem', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+        <Card.Header className="fw-semibold text-white" style={{ backgroundColor: '#2B2B2B', fontSize: '0.85rem', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
           {title}
         </Card.Header>
       )}

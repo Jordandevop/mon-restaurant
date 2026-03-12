@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useMemo, useEffect } from "react";
 import products from "../data/product";
 
-const FilterContext = createContext();
+export const FilterContext = createContext();
 
 const ITEMS_PER_PAGE = 6;
 
@@ -65,4 +65,4 @@ export function FilterProvider({ children }) {
   );
 }
 
-export const useFilters = () => useContext(FilterContext);
+

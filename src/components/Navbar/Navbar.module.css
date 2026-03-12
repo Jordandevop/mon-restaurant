@@ -2,6 +2,25 @@
   animation: fadeDown 0.8s 0.3s ease both;
 }
 
+.themeBtn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.themeBtn:hover {
+  transform: scale(1.1);
+  background: var(--border);
+}
+
 @keyframes fadeDown {
   from { opacity: 0; transform: translateY(-30px); }
   to   { opacity: 1; transform: translateY(0); }

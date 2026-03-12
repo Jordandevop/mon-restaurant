@@ -1,6 +1,6 @@
 import SidebarBlock from "./SidebarBlock";
 import { Form, Badge, InputGroup } from "react-bootstrap";
-import { useFilters } from '../../context/FilterContext';
+import { useFilters } from '../../context/useFilter';
 import styles from './Sidebar.module.css';
 
 const CATEGORIES = [
@@ -48,14 +48,14 @@ const Sidebar = () => {
             style={{
               cursor: "pointer",
               fontSize: '0.9rem',
-              backgroundColor: selectedCategory === cat ? 'var(--brand-light)' : 'white',
-              color: selectedCategory === cat ? 'var(--brand-dark)' : '#333',
+              backgroundColor: selectedCategory === cat ? 'var(--brand-light)' : 'var(--bg)',
+              color: selectedCategory === cat ? 'var(--brand-dark)' : 'var(--dark)',
               fontWeight: selectedCategory === cat ? '600' : '400',
               borderLeft: selectedCategory === cat ? '3px solid var(--brand)' : '3px solid transparent',
               transition: 'all 0.15s',
             }}
-            onMouseEnter={e => { if (selectedCategory !== cat) e.currentTarget.style.backgroundColor = '#fafafa' }}
-            onMouseLeave={e => { if (selectedCategory !== cat) e.currentTarget.style.backgroundColor = 'white' }}
+            onMouseEnter={e => { if (selectedCategory !== cat) e.currentTarget.style.backgroundColor = 'var(--brand-light)' }}
+            onMouseLeave={e => { if (selectedCategory !== cat) e.currentTarget.style.backgroundColor = 'var(--bg)' }}
           >
             {cat}
           </div>
@@ -65,7 +65,7 @@ const Sidebar = () => {
       {/* Bloc Recherche */}
       <SidebarBlock>
         <InputGroup className="p-2">
-          <InputGroup.Text className="border-0 bg-white" style={{ fontSize: '0.85rem' }}>🔍</InputGroup.Text>
+          <InputGroup.Text className="border-0 bg-transparent" style={{ fontSize: '0.85rem' }}>🔍</InputGroup.Text>
           <Form.Control
             type="text"
             placeholder="Rechercher..."
@@ -106,7 +106,7 @@ const Sidebar = () => {
                 fontSize: "0.72rem",
                 cursor: "pointer",
                 backgroundColor: selectedTag === tag ? 'var(--brand)' : undefined,
-                borderColor: selectedTag === tag ? 'var(--brand)' : '#ddd',
+                borderColor: selectedTag === tag ? 'var(--brand)' : 'var(--border)',
               }}
               onClick={() => setSelectedTag(tag === selectedTag ? "" : tag)}
             >
@@ -118,7 +118,7 @@ const Sidebar = () => {
 
       <button
         className="btn btn-sm w-100"
-        style={{ color: 'var(--brand)', borderColor: 'var(--brand)', background: 'white' }}
+        style={{ color: 'var(--brand)', borderColor: 'var(--brand)', background: 'var(--bg)' }}
         onClick={clearFilters}
       >
         ✕ Effacer les filtres

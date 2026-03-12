@@ -2,7 +2,7 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  background: white;
+  background: var(--bg);
   border: none;
   border-radius: 50%;
   width: 32px;
@@ -18,4 +18,87 @@
 
 .favoriteBtn:hover {
   transform: scale(1.2);
+}
+
+.cartControls {
+  display: flex;
+  align-items: center;
+}
+
+.btnAddToCart {
+  width: 100%;
+  padding: 8px;
+  background: var(--brand);
+  color: var(--bg);
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btnAddToCart:hover {
+  background: var(--brand-dark);
+}
+
+.qtyControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--brand-light);
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+.qtyBtn {
+  background: var(--brand);
+  color: var(--bg);
+  border: none;
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.qtyBtn:hover {
+  background: var(--brand-dark);
+}
+
+.qty {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--brand);
+  min-width: 24px;
+  text-align: center;
+}
+
+.tagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 12px;
+  min-height: 48px; 
+  align-content: flex-start;
+}
+
+.cardWrapper {
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cardWrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+ 
 }

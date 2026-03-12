@@ -5,7 +5,7 @@ const Button = ({ onClick }) => {
     <BsButton
       size="sm"
       className="w-100 fw-semibold"
-      style={{ backgroundColor: 'var(--brand)', borderColor: 'var(--brand)' }}
+      style={{ backgroundColor: 'var(--brand)', borderColor: 'var(--brand)', color: 'var(--bg)' }}
       onMouseOver={e => e.currentTarget.style.backgroundColor = 'var(--brand-dark)'}
       onMouseOut={e => e.currentTarget.style.backgroundColor = 'var(--brand)'}
       onClick={onClick}
