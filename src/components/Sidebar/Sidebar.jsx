@@ -2,6 +2,8 @@ import SidebarBlock from "./SidebarBlock";
 import { Form, Badge, InputGroup } from "react-bootstrap";
 import { useFilters } from '../../context/useFilter';
 import styles from './Sidebar.module.css';
+import {useFavorites} from '../../context/useFavorites';
+import {useCart} from '../../context/useCart'
 
 const CATEGORIES = [
   "Burger",
@@ -36,6 +38,8 @@ const Sidebar = () => {
     clearFilters
   } = useFilters();
 
+  const {favorites, toggleFavorite} = useFavorites();
+  const {addToCart}= useCart();
   return (
     <aside className={styles.sidebar}>
       {/* Bloc Catégories */}
@@ -115,6 +119,44 @@ const Sidebar = () => {
           ))}
         </div>
       </SidebarBlock>
+
+      {/* Bloc Favoris — visible seulement si y'a des favoris */}
+      {favorites.length > 0 && (
+        <SidebarBlock title={`Favoris ❤️ (${favorites.length})`}>
+          {favorites.map(product => (
+            <div
+              key={product.id}
+              className="d-flex align-items-center gap-2 px-3 py-2 border-bottom"
+              style={{ fontSize: '0.85rem' }}
+            >
+              <img
+                src={product.image}
+                alt={product.name}
+                style={{ width: '36px', height: '36px', objectFit: 'cover', borderRadius: '4px' }}
+              />
+              <span style={{ flex: 1, fontWeight: 500, color: 'var(--dark)' }}>
+                {product.name}
+              </span>
+              <button
+                onClick={() => addToCart(product)}
+                style={{
+                  background: 'var(--brand)', color: 'var(--bg)',
+                  border: 'none', borderRadius: '4px',
+                  padding: '2px 8px', fontSize: '0.75rem', cursor: 'pointer',
+                }}
+              >
+                🛒
+              </button>
+              <button
+                onClick={() => toggleFavorite(product)}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px' }}
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </SidebarBlock>
+      )}
 
       <button
         className="btn btn-sm w-100"

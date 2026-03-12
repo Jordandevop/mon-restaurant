@@ -95,6 +95,7 @@
   transition: transform 0.2s, box-shadow 0.2s;
   border-radius: 10px;
   overflow: hidden;
+  border: 1px solid var(--border);
 }
 
 .cardWrapper:hover {

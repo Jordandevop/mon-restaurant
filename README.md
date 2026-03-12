@@ -1,16 +1,69 @@
-# React + Vite
+# 🍽 Mon Restaurant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application React de commande en ligne pour un restaurant fictif, réalisée dans le cadre d'un exercice de formation.
 
-Currently, two official plugins are available:
+## 🚀 Lancer le projet
+```bash
+npm install
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Stack technique
 
-## React Compiler
+- **React + Vite**
+- **React Bootstrap** — composants UI
+- **CSS Modules** — styles scopés par composant
+- **react-toastify** — notifications
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📁 Structure
+```
+src/
+  components/
+    Header/        # Hero avec parallax et animation d'entrée
+    Navbar/        # Navigation + toggle dark mode
+    Sidebar/       # Filtres (catégorie, prix, tags, recherche)
+    Product/       # Card produit avec gestion quantité
+    Cart/          # Panier Offcanvas
+    Footer/
+  context/
+    FilterContext  # Filtres + pagination
+    CartContext    # Panier (useReducer)
+    FavoritesContext # Favoris
+    ThemeContext   # Dark mode
+  data/
+    product.js     # Données produits
+  reducers/
+    cartReducers.js
+```
 
-## Expanding the ESLint configuration
+## ✅ Fonctionnalités
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Filtres
+- Filtrage par catégorie, tag, prix maximum et recherche textuelle
+- Pagination (6 produits par page)
+- Clic sur un tag d'un produit pour filtrer directement
+- Bouton "Effacer les filtres"
+
+### Panier
+- Ajout / suppression / modification de quantité
+- Si quantité = 1 et on décrémente → suppression automatique
+- Prix total calculé dynamiquement
+- Bouton "Vider le panier" avec confirmation
+- Géré avec `useReducer`
+
+### Bonus
+- Favoris ❤️ accessibles dans la sidebar
+- Toast de confirmation à chaque ajout panier
+- Dark mode ☀️ / 🌙
+- Animations d'entrée en cascade (header, navbar, sidebar, produits)
+- Contrôles quantité directement sur la card produit
+
+## 💡 Choix techniques
+
+ — les filtres et le panier étant utilisés dans de nombreux composants, centraliser l'état dans des contextes dédiés évite de faire passer les props à travers plusieurs niveaux.
+
+**useReducer pour le panier** — la logique du panier (ajouter, décrémenter, supprimer, vider) est suffisamment complexe pour justifier un reducer plutôt qu'un simple useState.
+
+**CSS Modules** — chaque composant a son propre fichier `.module.css` pour éviter les conflits de classes, avec des variables globales centralisées dans `index.css`.
+
+**Offcanvas plutôt que Modal pour le panier** — le panier est une zone de travail persistante qui peut contenir beaucoup d'articles. L'Offcanvas prend toute la hauteur de l'écran et laisse percevoir la page derrière, contrairement à une modal qui bloque l'expérience.
