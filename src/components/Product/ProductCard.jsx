@@ -1,7 +1,9 @@
 import { Card } from 'react-bootstrap'
 import Button from './Button'
+import {useFilters} from "../../context/FilterContext"
 
 const ProductCard = ({ product, onAddToCart }) => {
+  const {setSelectedTag} = useFilters()
   return (
     <Card className="h-100 shadow-sm border-0" style={{ borderRadius: '10px', overflow: 'hidden', transition: 'transform 0.2s, box-shadow 0.2s' }}
       onMouseEnter={e => {
@@ -32,8 +34,9 @@ const ProductCard = ({ product, onAddToCart }) => {
           {product.tags.map((tag) => (
             <span
               key={tag}
+              onClick={() => setSelectedTag(tag)}
               className="px-2 py-0 rounded-pill"
-              style={{ fontSize: '0.7rem', background: 'var(--brand-light)', color: 'var(--brand-dark)', border: '1px solid #f0c8b0' }}
+              style={{ fontSize: '0.7rem', background: 'var(--brand-light)', color: 'var(--brand-dark)', border: '1px solid #f0c8b0', cursor: 'pointer', }}
             >
               {tag}
             </span>
