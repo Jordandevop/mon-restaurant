@@ -1,6 +1,7 @@
 import SidebarBlock from "./SidebarBlock";
 import { Form, Badge, InputGroup } from "react-bootstrap";
 import { useFilters } from '../../context/FilterContext';
+import styles from './Sidebar.module.css';
 
 const CATEGORIES = [
   "Burger",
@@ -36,7 +37,7 @@ const Sidebar = () => {
   } = useFilters();
 
   return (
-    <aside>
+    <aside className={styles.sidebar}>
       {/* Bloc Catégories */}
       <SidebarBlock title="Catégorie">
         {CATEGORIES.map((cat) => (

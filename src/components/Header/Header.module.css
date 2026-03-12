@@ -1,0 +1,90 @@
+.headerHero {
+  position: relative;
+  height: 280px;
+  background-image: url('../../assets/bg_restaurant.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeDown 0.8s ease both;
+}
+
+.headerOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.headerTitle {
+  position: relative;
+  z-index: 1;
+  color: var(--brand-light);
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+  animation: fadeDown 0.8s 0.4s ease both;
+}
+
+.headerSubtitle {
+  position: relative;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-lato);
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  animation: fadeDown 0.8s 0.6s ease both;
+}
+
+.headerCartWrapper {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  z-index: 1;
+  animation: fadeDown 0.8s 0.8s ease both; 
+}
+
+.headerCartBtn {
+  background-color: var(--brand-light);
+  border: none;
+  border-radius: 6px;
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.headerCartBtn:hover {
+  transform: scale(1.1);
+  background-color: var(--accent);
+}
+
+.headerCartBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: var(--danger);
+  color: var(--brand-light);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

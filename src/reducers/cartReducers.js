@@ -24,6 +24,9 @@ export const cartReducer = (state, action) => {
       );
     }
 
+    case "CLEAR_CART":
+      return[];
+
     case "DELETE_ITEM":
       return state.filter((item) => item.id !== action.payload);
 

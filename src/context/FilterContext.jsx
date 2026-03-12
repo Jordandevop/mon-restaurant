@@ -1,25 +1,33 @@
-import { createContext, useContext, useState, useMemo } from "react";
+import { createContext, useContext, useState, useMemo, useEffect } from "react";
 import products from "../data/product";
-
 
 const FilterContext = createContext();
 
-export function FilterProvider({children}){
-    const [selectedCategory, setSelectedCategory] = useState("");
-    const [maxPrice, setMaxPrice] = useState("");
-    const [selectedTag, setSelectedTag] = useState("");
-    const [searchQuery, setSearchQuery] = useState("");
+const ITEMS_PER_PAGE = 6;
 
-    const clearFilters =() =>{
-        setSelectedCategory("");
-        setMaxPrice("");
-        setSelectedTag("");
-        setSearchQuery("");
-    };
+export function FilterProvider({ children }) {
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [selectedTag, setSelectedTag] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
-    const filteredProducts = useMemo(() => {
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, maxPrice, selectedTag, searchQuery]);
+
+  const clearFilters = () => {
+    setSelectedCategory("");
+    setMaxPrice("");
+    setSelectedTag("");
+    setSearchQuery("");
+  };
+
+  const filteredProducts = useMemo(() => {
     return products.filter((p) => {
-      const matchCategory = selectedCategory ? p.category === selectedCategory : true;
+      const matchCategory = selectedCategory
+        ? p.category === selectedCategory
+        : true;
       const matchPrice = maxPrice ? p.price <= Number(maxPrice) : true;
       const matchTag = selectedTag ? p.tags.includes(selectedTag) : true;
       const matchQuery = searchQuery
@@ -29,21 +37,32 @@ export function FilterProvider({children}){
     });
   }, [selectedCategory, maxPrice, selectedTag, searchQuery]);
 
-    const value ={
-        selectedCategory, setSelectedCategory,
-        maxPrice, setMaxPrice,
-        selectedTag, setSelectedTag,
-        searchQuery, setSearchQuery,
-        clearFilters,
-        filteredProducts
-    };
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
 
-    return (
-        <FilterContext.Provider value= {value}>
-            {children}
-        </FilterContext.Provider>
-    )
+  const paginatedProducts = useMemo(()=>{
+    const start = (currentPage -1) * ITEMS_PER_PAGE;
+    return filteredProducts.slice(start, start + ITEMS_PER_PAGE);
+  },[filteredProducts, currentPage])
 
+  const value = {
+    selectedCategory,
+    setSelectedCategory,
+    maxPrice,
+    setMaxPrice,
+    selectedTag,
+    setSelectedTag,
+    searchQuery,
+    setSearchQuery,
+    clearFilters,
+    filteredProducts,
+    paginatedProducts,
+    currentPage, setCurrentPage,
+    totalPages,
+  };
+
+  return (
+    <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
+  );
 }
 
 export const useFilters = () => useContext(FilterContext);

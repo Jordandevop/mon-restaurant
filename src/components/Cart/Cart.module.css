@@ -1,5 +1,5 @@
-.cart-btn {
-  background-color: white;
+.cartBtn {
+  background-color: var(--brand-light);
   border: none;
   border-radius: 6px;
   width: 44px;
@@ -9,20 +9,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position:relative;
+  position: relative;
+  transition: background-color 0.2s;
 }
 
-.cart-btn:hover {
-  background-color: #f0f0f0;
+.cartBtn:hover {
+  background-color: var(--border);
 }
 
-
-
-.cart-badge {
+.cartBadge {
   position: absolute;
   top: -6px;
   right: -6px;
-  background-color: #e74c3c;
+  background-color: var(--danger);
   color: white;
   border-radius: 50%;
   width: 18px;

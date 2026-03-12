@@ -1,9 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Nunito:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Nunito:wght@400;500;600&family=Playfair+Display:wght@700&family=Lato:wght@400;600&display=swap');
 
 :root {
+  /* Typographie */
   --font-heading: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Nunito', sans-serif;
+  --font-serif: 'Playfair Display', serif;  
+  --font-lato: 'Lato', sans-serif;          
 
+  /* Couleurs principales */
   --brand: #2B2B2B;
   --brand-dark: #111111;
   --brand-light: #FAFAFA;
@@ -11,6 +15,10 @@
   --dark: #1A1A1A;
   --text-muted: #9A9A9A;
   --bg: #FFFFFF;
+
+  /* Couleurs utilitaires */
+  --border: #F0EBE0;      
+  --danger: #e74c3c;     
 }
 
 * {

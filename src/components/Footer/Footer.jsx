@@ -1,11 +1,12 @@
-import './Footer.css'
+import styles from './Footer.module.css'
+
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   return (
-    <footer className="footer">
-      <p className="footer-brand">Mon Restaurant</p>
-      <p className="footer-text">
+    <footer className={styles.footer}>
+      <p className={styles.footerBrand}>Mon Restaurant</p>
+      <p className={styles.footerText}>
         © {currentYear} — Tous droits réservés ·
       </p>
     </footer>
